@@ -1,0 +1,187 @@
+@import url("/globals.css");
+
+/* top, right, bottom, left */
+
+.foreground_layer {
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	padding: 0;
+	margin: 0;
+	clip-path: polygon(
+		calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+		50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+		calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+		50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+	);
+	transition: clip-path 250ms ease-in-out;
+	/*animation: bottom_right_animation 3s ease-in-out infinite;*/
+}
+
+.top_left, .top_right, .bottom_right, .bottom_left {
+	background: white;
+	width: var(--tl);
+	height: var(--tl);
+}
+
+.top_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		0 100%
+	);
+}
+
+.top_right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% 100%
+	);
+}
+
+.bottom_right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	clip-path: polygon(
+		100% 0,
+		100% 100%,
+		0 100%
+	);
+}
+
+.bottom_left {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	clip-path: polygon(
+		0 0,
+		100% 100%,
+		0 100%
+	);
+}
+
+/*Hover events*/
+	.top_left:hover ~ .foreground_layer {
+		clip-path: polygon(
+			calc(-1 * (50vh - var(--tl)) + var(--hl)) 	calc(50vh + var(--hl)),											/*Left*/
+			calc(50vw + var(--hl)) 											calc(-1 * (50vw - var(--tl)) + var(--hl)), 	/*Top*/
+			calc(100vw + 50vh - var(--tl)) 							50vh, 																			/*Right*/
+			50vw 																				calc(100vh + 50vw - var(--tl)) 							/*Bottom*/
+		);
+		transition: clip-path 250ms ease-in-out;
+	}
+
+	.top_right:hover ~ .foreground_layer {
+		clip-path: polygon(
+			calc(-1 * (50vh - var(--tl)))							 	calc(50vh),																	/*Left*/
+			calc(50vw - var(--hl))						 					calc(-1 * (50vw - var(--tl)) + var(--hl)),	/*Top*/
+			calc(100vw + 50vh - var(--tl) - var(--hl)) 	calc(50vh + var(--hl)), 										/*Right*/
+			50vw 																				calc(100vh + 50vw - var(--tl)) 							/*Bottom*/
+		);
+		transition: clip-path 250ms ease-in-out;
+	}
+
+	.bottom_right:hover ~ .foreground_layer {
+		clip-path: polygon(
+			calc(-1 * (50vh - var(--tl)))							 	50vh,																				/*Left*/
+			50vw															 					calc(-1 * (50vw - var(--tl))),							/*Top*/
+			calc(100vw + 50vh - var(--tl) - var(--hl))	calc(50vh - var(--hl)), 											/*Right*/
+			calc(50vw - var(--hl)) 											calc(100vh + 50vw - var(--tl) - var(--hl)) 	/*Bottom*/
+		);
+		transition: clip-path 250ms ease-in-out;
+	}
+
+	.bottom_left:hover ~ .foreground_layer {
+		clip-path: polygon(
+			calc(-1 * (50vh - var(--tl)) + var(--hl))		calc(50vh - var(--hl)),											/*Left*/
+			50vw															 					calc(-1 * (50vw - var(--tl))),							/*Top*/
+			calc(100vw + 50vh - var(--tl))							50vh,									 											/*Right*/
+			calc(50vw + var(--hl)) 											calc(100vh + 50vw - var(--tl) - var(--hl)) 	/*Bottom*/
+		);
+		transition: clip-path 250ms ease-in-out;
+	}
+
+/*Open animations*/
+	@keyframes top_left_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				50vw calc(100vh + 50vw - var(--tl)), /*Left*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes top_right_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Top*/
+				50vw calc(100vh + 50vw - var(--tl)), /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes bottom_right_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Right*/
+				calc(-1 * (50vh - var(--tl))) 50vh /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes bottom_left_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				50vw calc(-1 * (50vw - var(--tl))), /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				calc(100vw + 50vh - var(--tl)) 50vh /*Bottom*/
+			);
+		}
+	}
