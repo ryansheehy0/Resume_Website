@@ -2,7 +2,7 @@
 
 /* top, right, bottom, left */
 
-.foreground_layer {
+.foreground {
 	height: 100vh;
 	width: 100vw;
 	background-color: black;
@@ -14,8 +14,7 @@
 		calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
 		50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
 	);
-	transition: clip-path 250ms ease-in-out;
-	/*animation: bottom_right_animation 3s ease-in-out infinite;*/
+	transition: clip-path 2s ease-in-out;
 }
 
 .top_left, .top_right, .bottom_right, .bottom_left {
@@ -109,14 +108,24 @@
 		transition: clip-path 250ms ease-in-out;
 	}
 
+/*Set Open Animations*/
+	.top_left_set_open_animation ~ .foreground_layer{
+		animation: top_left_open_animation 3s ease-in-out 1;
+		animation-fill-mode: forwards;
+	}
+	.top_left_set_close_animation ~ .foreground_layer{
+		animation: top_left_close_animation 3s ease-in-out 1;
+		animation-fill-mode: forwards;
+	}
+
 /*Open animations*/
-	@keyframes top_left_animation {
+	@keyframes top_left_open_animation {
 		0% {
 			clip-path: polygon(
-				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
-				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
-				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
-				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+				calc(-1 * (50vh - var(--tl))) 50vh,
+				50vw calc(-1 * (50vw - var(--tl))),
+				calc(100vw + 50vh - var(--tl)) 50vh,
+				50vw calc(100vh + 50vw - var(--tl))
 			);
 		}
 		100% {
@@ -129,7 +138,7 @@
 		}
 	}
 
-	@keyframes top_right_animation {
+	@keyframes top_right_open_animation {
 		0% {
 			clip-path: polygon(
 				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
@@ -148,7 +157,7 @@
 		}
 	}
 
-	@keyframes bottom_right_animation {
+	@keyframes bottom_right_open_animation {
 		0% {
 			clip-path: polygon(
 				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
@@ -167,7 +176,7 @@
 		}
 	}
 
-	@keyframes bottom_left_animation {
+	@keyframes bottom_left_open_animation {
 		0% {
 			clip-path: polygon(
 				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
@@ -182,6 +191,83 @@
 				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
 				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
 				calc(100vw + 50vh - var(--tl)) 50vh /*Bottom*/
+			);
+		}
+	}
+
+/*Close animations*/
+	@keyframes top_left_close_animation {
+		0% {
+			clip-path: polygon(
+				50vw calc(100vh + 50vw - var(--tl)),
+				calc(100vw + 50vh - var(--tl)) 50vh,
+				calc(100vw + 50vh - var(--tl)) 50vh,
+				50vw calc(100vh + 50vw - var(--tl))
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes top_right_close_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Top*/
+				50vw calc(100vh + 50vw - var(--tl)), /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes bottom_right_close_animation {
+		0% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Right*/
+				calc(-1 * (50vh - var(--tl))) 50vh /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
+			);
+		}
+	}
+
+	@keyframes bottom_left_close_animation {
+		0% {
+			clip-path: polygon(
+				50vw calc(-1 * (50vw - var(--tl))), /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				calc(100vw + 50vh - var(--tl)) 50vh /*Bottom*/
+			);
+		}
+		100% {
+			clip-path: polygon(
+				calc(-1 * (50vh - var(--tl))) 50vh, /*Left*/
+				50vw calc(-1 * (50vw - var(--tl))), /*Top*/
+				calc(100vw + 50vh - var(--tl)) 50vh, /*Right*/
+				50vw calc(100vh + 50vw - var(--tl)) /*Bottom*/
 			);
 		}
 	}
