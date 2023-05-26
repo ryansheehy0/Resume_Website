@@ -4,7 +4,7 @@
   let tl ='200px' // Triangle length
 	let hl = '20px' // Hover length
 
-export const foreground = (isMouseOverTopLeft, isTopLeftClicked, isMouseOverTopRight, isTopRightClicked, isMouseOverBottomRight, isBottomRightClicked, isMouseOverBottomLeft, isBottomLeftClicked) => {
+export const foreground = (isMouseOverTopLeft, isTopLeftClicked, isMouseOverTopRight, isTopRightClicked) => {
 	let clipPathValue = `polygon(
 		calc(-1 * (50vh - ${tl})) 50vh, /*Left*/
 		50vw calc(-1 * (50vw - ${tl})), /*Top*/
@@ -45,42 +45,6 @@ export const foreground = (isMouseOverTopLeft, isTopLeftClicked, isMouseOverTopR
 				calc(-1 * (50vh - ${tl})) 50vh, /*Top*/
 				50vw calc(100vh + 50vw - ${tl}), /*Right*/
 				50vw calc(100vh + 50vw - ${tl}) /*Bottom*/
-			)`;
-		}
-
-	// Bottom Right
-		if (isMouseOverBottomRight) {
-			clipPathValue = `polygon(
-				calc(-1 * (50vh - ${tl}))							 	50vh,																		/*Left*/
-				50vw															 			calc(-1 * (50vw - ${tl})),							/*Top*/
-				calc(100vw + 50vh - ${tl} - ${hl})			calc(50vh - ${hl}), 										/*Right*/
-				calc(50vw - ${hl}) 											calc(100vh + 50vw - ${tl} - ${hl}) 			/*Bottom*/
-			)`;
-		}
-		if (isBottomRightClicked) {
-			clipPathValue = `polygon(
-				calc(-1 * (50vh - ${tl})) 50vh, /*Left*/
-				50vw calc(-1 * (50vw - ${tl})), /*Top*/
-				50vw calc(-1 * (50vw - ${tl})), /*Right*/
-				calc(-1 * (50vh - ${tl})) 50vh /*Bottom*/
-			)`;
-		}
-
-	// Bottom Left
-		if (isMouseOverBottomLeft) {
-			clipPathValue = `polygon(
-				calc(-1 * (50vh - ${tl}) + ${hl})			calc(50vh - ${hl}),										/*Left*/
-				50vw															 		calc(-1 * (50vw - ${tl})),						/*Top*/
-				calc(100vw + 50vh - ${tl})						50vh,									 								/*Right*/
-				calc(50vw + ${hl}) 										calc(100vh + 50vw - ${tl} - ${hl}) 		/*Bottom*/
-			)`;
-		}
-		if (isBottomLeftClicked) {
-			clipPathValue = `polygon(
-				50vw calc(-1 * (50vw - ${tl})), /*Left*/
-				50vw calc(-1 * (50vw - ${tl})), /*Top*/
-				calc(100vw + 50vh - ${tl}) 50vh, /*Right*/
-				calc(100vw + 50vh - ${tl}) 50vh /*Bottom*/
 			)`;
 		}
 
@@ -199,7 +163,7 @@ export const topRightText = () => {
 }
 
 export const bottomRightText = () => {
-	let width = '177px'
+	let width = '150px'
 	let height = '35px'
 	const oneOverSqrtTwo = '0.707106781'
 	let offset = `calc(50% - ${oneOverSqrtTwo} * (${width}/2 + ${height}))`
@@ -207,31 +171,12 @@ export const bottomRightText = () => {
 		background: 'blue',
 		display: 'inline-block',
 		position: 'relative',
-		top: `calc(165px - ${offset})`,
-		left: `calc(49px + ${offset})`,
+		top: `0px`,
+		left: `0px`,
 		width: `${width}`,
 		height: `${height}`,
 		textAlign: 'left',
 		transformOrigin: 'bottom left',
-		fontSize: '2.0rem',
-	}
-}
-
-export const bottomLeftText = () => {
-	let width = '133px'
-	let height = '35px'
-	const oneOverSqrtTwo = '0.707106781'
-	let offset = `calc(50% - ${oneOverSqrtTwo} * (${width}/2 + ${height}))`
-	return {
-		background: 'blue',
-		display: 'inline-block',
-		position: 'relative',
-		top: `calc(165px - ${offset})`,
-		left: `calc(17px - ${offset})`,
-		width: `${width}`,
-		height: `${height}`,
-		textAlign: 'right',
-		transformOrigin: 'bottom right',
 		fontSize: '2.0rem',
 	}
 }
