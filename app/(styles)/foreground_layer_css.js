@@ -1,6 +1,4 @@
 // Variables
-  let primaryColor = '#000000'
-  let textColor = '#ffffff'
   let tl ='200px' // Triangle length
 	let hl = '20px' // Hover length
 
@@ -94,9 +92,10 @@ export const foreground = (isMouseOverTopLeft, isTopLeftClicked, isMouseOverTopR
 		transition:`clip-path 250ms ease-in-out`,
 	}
 }
+
 const corners = () => {
 	return {
-		background: 'rgba(0,0,0,0)',
+		backgroundColor: 'rgba(0,0,0,0)',
 		width: `${tl}`,
 		height: `${tl}`,
 		cursor: 'pointer',
@@ -166,7 +165,6 @@ export const topLeftText = () => {
 	const oneOverSqrtTwo = '0.707106781'
 	let offset = `calc(50% - ${oneOverSqrtTwo} * (${width}/2 + ${height}))`
 	return {
-		background: 'blue',
 		display: 'inline-block',
 		position: 'relative',
 		top: `${offset}`,
@@ -176,6 +174,9 @@ export const topLeftText = () => {
 		textAlign: 'right',
 		transformOrigin: 'top right',
 		fontSize: '2.0rem',
+		transform: 'rotate(-45deg)',
+		color: 'white',
+		transition: 'transform 250ms ease-in-out, color 250ms ease-in-out',
 	}
 }
 
@@ -187,7 +188,6 @@ export const topRightText = () => {
 	return {
 		display: 'inline-block',
 		position: 'relative',
-		background: 'blue',
 		top: `${offset}`,
 		right: `calc(-48px - ${offset})`,
 		width: `${width}`,
@@ -195,6 +195,9 @@ export const topRightText = () => {
 		textAlign: 'left',
 		transformOrigin: 'top left',
 		fontSize: '2.0rem',
+		transform: 'rotate(45deg)',
+		color: 'white',
+		transition: 'transform 250ms ease-in-out, color 250ms ease-in-out',
 	}
 }
 
@@ -204,7 +207,6 @@ export const bottomRightText = () => {
 	const oneOverSqrtTwo = '0.707106781'
 	let offset = `calc(50% - ${oneOverSqrtTwo} * (${width}/2 + ${height}))`
 	return {
-		background: 'blue',
 		display: 'inline-block',
 		position: 'relative',
 		top: `calc(165px - ${offset})`,
@@ -214,6 +216,9 @@ export const bottomRightText = () => {
 		textAlign: 'left',
 		transformOrigin: 'bottom left',
 		fontSize: '2.0rem',
+		transform: 'rotate(-45deg)',
+		color: 'white',
+		transition: 'transform 250ms ease-in-out, color 250ms ease-in-out',
 	}
 }
 
@@ -223,7 +228,6 @@ export const bottomLeftText = () => {
 	const oneOverSqrtTwo = '0.707106781'
 	let offset = `calc(50% - ${oneOverSqrtTwo} * (${width}/2 + ${height}))`
 	return {
-		background: 'blue',
 		display: 'inline-block',
 		position: 'relative',
 		top: `calc(165px - ${offset})`,
@@ -233,5 +237,8 @@ export const bottomLeftText = () => {
 		textAlign: 'right',
 		transformOrigin: 'bottom right',
 		fontSize: '2.0rem',
+		transform: 'rotate(45deg)',
+		color: 'white',
+		transition: 'transform 250ms ease-in-out, color 250ms ease-in-out',
 	}
 }
