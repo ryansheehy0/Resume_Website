@@ -1,10 +1,9 @@
 'use client'
 
-import { topLeft, topRight, bottomRight, bottomLeft, foreground, topLeftText, topRightText, bottomRightText, bottomLeftText} from './(styles)/foreground_layer_css'
+import {topLeft, topRight, bottomRight, bottomLeft, foreground, topLeftText, topRightText, bottomRightText, bottomLeftText} from './(styles)/foreground_layer_css'
 import {useState, useRef, useEffect} from 'react'
 
 export default function Home() {
-
 	// Background
 		const backgroundRef = useRef()
 		useEffect(() => {
@@ -182,7 +181,9 @@ export default function Home() {
 			<div style={bottomLeft()} onMouseOver={() => setBottomLeftHover(true)} onMouseOut={() => setBottomLeftHover(false)} onClick={() => setBottomLeftClicked(!bottomLeftClicked)} ref={bottomLeftRef}>
 				<span style={bottomLeftText()} ref={bottomLeftTextRef}>My Skills</span>
 			</div>
-			<div style={foreground(topLeftHover, topLeftClicked, topRightHover, topRightClicked, bottomRightHover, bottomRightClicked, bottomLeftHover, bottomLeftClicked)}></div>
+			<div style={foreground(topLeftHover, topLeftClicked, topRightHover, topRightClicked, bottomRightHover, bottomRightClicked, bottomLeftHover, bottomLeftClicked)}>
+				<img src='/profile_picture.png' style={{height: '100%', position: 'relative', top: '100%', left: '0%', transform: 'translateX(-170px) translateY(-100%)', backgroundColor: 'black'}}/>
+			</div>
 		</div>
   )
 }

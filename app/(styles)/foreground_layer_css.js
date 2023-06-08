@@ -90,6 +90,7 @@ export const foreground = (isMouseOverTopLeft, isTopLeftClicked, isMouseOverTopR
 		margin:'0',
 		clipPath: clipPathValue,
 		transition:`clip-path 250ms ease-in-out`,
+		position:'absolute',
 	}
 }
 
