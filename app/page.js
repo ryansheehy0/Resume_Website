@@ -2,7 +2,7 @@
 
 import {topLeft, topRight, bottomRight, bottomLeft, foreground, topLeftText, topRightText, bottomRightText, bottomLeftText} from './(styles)/foreground_layer_css'
 import {useState, useRef, useEffect} from 'react'
-import ThreeDLogo from "./ThreeDLogo"
+import ThreeDName from "./ThreeDName"
 
 export default function Home() {
 	// Background
@@ -167,10 +167,6 @@ export default function Home() {
 		}, [bottomLeftClicked])
 
   return (
-		<div>
-			<ThreeDLogo/>
-		</div>
-		/*
 		<div style={backgroundCss()} ref={backgroundRef}>
 			<div style={topLeft()} onMouseOver={() => setTopLeftHover(true)} onMouseOut={() => setTopLeftHover(false)} onClick={() => setTopLeftClicked(!topLeftClicked)} ref={topLeftRef}>
 				<span style={topLeftText()} ref={topLeftTextRef}>About Me</span>
@@ -186,8 +182,8 @@ export default function Home() {
 			</div>
 			<div style={foreground(topLeftHover, topLeftClicked, topRightHover, topRightClicked, bottomRightHover, bottomRightClicked, bottomLeftHover, bottomLeftClicked)}>
 				<img src='/profile_picture.png' style={{height: '100%', position: 'relative', top: '100%', left: '0%', transform: 'translateX(-170px) translateY(-100%)', backgroundColor: 'black'}}/>
+				<ThreeDName/>
 			</div>
 		</div>
-		*/
   )
 }
